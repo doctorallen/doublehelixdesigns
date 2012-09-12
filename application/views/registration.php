@@ -1,4 +1,4 @@
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+<?php include('header.php'); ?>
 <script>
 $(document).ready(function(){
 	/* Email validation */
@@ -16,6 +16,16 @@ $(document).ready(function(){
 				}
 			}
 		);
+	});
+	$('#reconfirm_password').blur(function(){
+		var password = $('#password').val();
+		var reconfirm_password = $('#reconfirm_password').val();
+
+		$('#bad_password').replaceWith('');
+		if( password != reconfirm_password ){
+			$('#reconfirm_password').after(
+				'<div id = "bad_password" style="color:red;">' + '<p>(The password fields do not match.)</p></div>');
+		}
 	});
 });
 </script>
@@ -47,3 +57,5 @@ $(document).ready(function(){
 
 	echo validation_errors();
 ?>
+
+<?php include('footer.php'); ?>
