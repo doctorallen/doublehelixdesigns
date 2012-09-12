@@ -27,6 +27,29 @@ $(document).ready(function(){
 				'<div id = "bad_password" style="color:red;">' + '<p>(The password fields do not match.)</p></div>');
 		}
 	});
+
+
+		$('#submit').click(function(){
+			var form_data= {
+				email_address : $('#email_address').val(),
+					password: $('#password').val(),
+					reconfirm_password: $('#reconfirm_password').val(),
+					first_name: $('#first_name').val(),
+					last_name: $('#last_name').val(),
+					ajax: '1'
+			};
+
+			$.ajax({
+				url : "<?php echo site_url('admin/register'); ?>",
+				type : 'POST',
+				async : false,
+				data: form_data,
+				success: function(){
+					window.location.replace("<?php echo site_url(); ?>");
+				}
+			});
+			return false;
+		});
 });
 </script>
 
@@ -52,7 +75,7 @@ $(document).ready(function(){
 	echo form_label('Last Name:', 'last_name');
 	echo form_input('last_name', set_value('last_name'), 'id="last_name"');
 
-	echo form_submit('submit', 'Register');
+	echo form_submit('submit', 'Register', 'id="submit"');
 	echo form_close();
 
 	echo validation_errors();

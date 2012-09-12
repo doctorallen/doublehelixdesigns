@@ -41,6 +41,7 @@
 $route['default_controller'] = "admin";
 $route['404_override'] = '';
 $route['admin/login'] = 'ajax/login';
+$route['admin/register'] = 'ajax/register';
 
 
 /* End of file routes.php */

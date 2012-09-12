@@ -36,5 +36,5 @@
 
 	echo validation_errors();
 ?>
-<a href="registration">Register!</a>
+<a href="admin/registration">Register</a>
 <?php include('footer.php'); ?>
